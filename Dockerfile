@@ -4,9 +4,9 @@ WORKDIR /demo-app
 
 COPY . /demo-app
 
-RUN npm install
+RUN npm i 
 
-RUN npm run build
+RUN npm run build --prod
 
 EXPOSE 8080
 
