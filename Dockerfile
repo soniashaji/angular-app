@@ -4,9 +4,7 @@ WORKDIR /demo-app
 
 COPY . /demo-app
 
-RUN npm i
-
-RUN npm run build --prod
+RUN npm audit fix --force
 
 EXPOSE 8080
 
