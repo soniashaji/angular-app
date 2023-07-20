@@ -1,20 +1,11 @@
-# Use Node 16 alpine as parent image
-FROM node:16-alpine
-
-# Change the working directory on the Docker image to /app
+#stage1
+FROM node:16-alpine3.11 as angular
 WORKDIR /app
-
-# Copy package.json and package-lock.json to the /app directory
-COPY package.json ./
-
-# Install dependencies
+COPY . /app
 RUN npm install
+RUN npm run build
 
-# Copy the rest of project files into this image
-COPY . .
-
-# Expose application port
-EXPOSE 3000
-
-# Start the application
-CMD npm start
+#stage2
+FROM https:alpine3.15
+WORKDIR  /usr/local/apache2/htdocs
+COPY --from=angular /app/dist/angular-app .
