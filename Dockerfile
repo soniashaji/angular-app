@@ -8,4 +8,4 @@ RUN npm run build
 #stage2
 FROM httpd:alpine3.15
 WORKDIR  /usr/local/apache2/htdocs
-COPY --from=angular /app/dist/app .
+COPY --from=angular /app/dist/* .
