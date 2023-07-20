@@ -1,11 +1,11 @@
-FROM node:latest
+FROM node:9.11.1-alpine
   
 WORKDIR /demo-app
 
 COPY . /demo-app
 
-RUN npm audit fix --force
+RUN npm i npm@6 -g
 
 EXPOSE 8080
 
-CMD [ "npm", "start" ]
+CMD [ "npm", "audit", "--json", "--verbose" ]
