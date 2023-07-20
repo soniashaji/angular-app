@@ -6,6 +6,6 @@ RUN npm install
 RUN npm run build
 
 #stage2
-FROM https:alpine3.15
+FROM httpd:alpine3.15
 WORKDIR  /usr/local/apache2/htdocs
 COPY --from=angular /app/dist/angular-app .
